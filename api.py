@@ -3,17 +3,14 @@ from pydantic import BaseModel
 from typing import List
 import json
 
-# ---------------- LOAD CATALOG ----------------
-
+# Load catalog
 with open("catalog.json", "r") as f:
     catalog = json.load(f)
 
-# ---------------- ROUTER ----------------
-
+# Create router
 router = APIRouter()
 
-# ---------------- MODELS ----------------
-
+# Request models
 class Message(BaseModel):
     role: str
     content: str
@@ -22,14 +19,14 @@ class Message(BaseModel):
 class ChatRequest(BaseModel):
     messages: List[Message]
 
-# ---------------- HEALTH ----------------
 
+# Health route
 @router.get("/health")
 def health():
     return {"status": "ok"}
 
-# ---------------- CHAT ----------------
 
+# Chat route
 @router.post("/chat")
 def chat(request: ChatRequest):
 
@@ -37,8 +34,7 @@ def chat(request: ChatRequest):
 
     recommendations = []
 
-    # ---------- CLARIFICATION ----------
-
+    # Clarification
     if len(user_message.split()) < 3:
 
         return {
@@ -47,8 +43,7 @@ def chat(request: ChatRequest):
             "end_of_conversation": False
         }
 
-    # ---------- JAVA ----------
-
+    # Java
     if "java" in user_message:
 
         for item in catalog:
@@ -66,8 +61,7 @@ def chat(request: ChatRequest):
             "programming and coding skills."
         )
 
-    # ---------- PYTHON ----------
-
+    # Python
     elif "python" in user_message:
 
         for item in catalog:
@@ -84,8 +78,7 @@ def chat(request: ChatRequest):
             "I recommend Python assessments for technical evaluation."
         )
 
-    # ---------- PERSONALITY ----------
-
+    # Personality
     elif "personality" in user_message:
 
         for item in catalog:
@@ -103,8 +96,7 @@ def chat(request: ChatRequest):
             "for behavioral evaluation."
         )
 
-    # ---------- COMPARISON ----------
-
+    # Compare
     elif "compare" in user_message:
 
         reply = (
@@ -112,8 +104,7 @@ def chat(request: ChatRequest):
             "while personality assessments measure behavioral traits."
         )
 
-    # ---------- FALLBACK ----------
-
+    # Fallback
     else:
 
         reply = (
