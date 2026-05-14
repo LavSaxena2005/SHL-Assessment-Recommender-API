@@ -1,0 +1,65 @@
+{
+  "examples": [
+    {
+      "scenario": "Vague query → clarification",
+      "request": {
+        "messages": [{"role": "user", "content": "I need an assessment"}]
+      },
+      "response": {
+        "reply": "I'd be happy to help you find the right SHL assessment. Could you tell me what role or job position you're hiring for?",
+        "recommendations": [],
+        "end_of_conversation": false
+      }
+    },
+    {
+      "scenario": "Specific query → recommendations",
+      "request": {
+        "messages": [
+          {"role": "user", "content": "Hiring Java developer"},
+          {"role": "assistant", "content": "What seniority level is this role? (Entry, Mid-level, or Senior)"},
+          {"role": "user", "content": "Mid-level, 3+ years experience"}
+        ]
+      },
+      "response": {
+        "reply": "For a mid-level Java developer with 3+ years of experience, I recommend these SHL assessments: Java 8 (New) to test core Java skills including OOP and streams, Automata Pro for hands-on coding evaluation in a realistic development environment, and Verify Numerical Reasoning if you want to assess analytical thinking.",
+        "recommendations": [
+          {"name": "Java 8 (New)", "url": "https://www.shl.com/solutions/products/assessments/skills-and-knowledge/java-8/", "test_type": "K"},
+          {"name": "Automata Pro", "url": "https://www.shl.com/solutions/products/assessments/skills-and-knowledge/automata-pro/", "test_type": "K"},
+          {"name": "Verify Numerical Reasoning", "url": "https://www.shl.com/solutions/products/assessments/cognitive-assessments/verify-numerical-reasoning/", "test_type": "A"}
+        ],
+        "end_of_conversation": true
+      }
+    },
+    {
+      "scenario": "Refinement → add personality",
+      "request": {
+        "messages": [
+          {"role": "user", "content": "Hiring Python data scientist"},
+          {"role": "assistant", "content": "Based on your requirements, I recommend Python (New), Machine Learning (New), and Data Analysis assessments."},
+          {"role": "user", "content": "Can you also add a personality assessment?"}
+        ]
+      },
+      "response": {
+        "reply": "Absolutely. In addition to the technical assessments, I recommend adding OPQ32 (Occupational Personality Questionnaire) to evaluate thinking style, interpersonal skills, and workplace behavior — particularly useful for data scientists who need to collaborate with cross-functional teams.",
+        "recommendations": [
+          {"name": "Python (New)", "url": "https://www.shl.com/solutions/products/assessments/skills-and-knowledge/python/", "test_type": "K"},
+          {"name": "Machine Learning (New)", "url": "https://www.shl.com/solutions/products/assessments/skills-and-knowledge/machine-learning/", "test_type": "K"},
+          {"name": "Data Analysis", "url": "https://www.shl.com/solutions/products/assessments/skills-and-knowledge/data-analysis/", "test_type": "K"},
+          {"name": "OPQ32 (Occupational Personality Questionnaire)", "url": "https://www.shl.com/solutions/products/assessments/personality-assessment/opq/", "test_type": "P"}
+        ],
+        "end_of_conversation": true
+      }
+    },
+    {
+      "scenario": "Out-of-scope refusal",
+      "request": {
+        "messages": [{"role": "user", "content": "Tell me about Hogan personality tests"}]
+      },
+      "response": {
+        "reply": "I can only assist with SHL assessment selection and cannot provide information about competitor products like Hogan. If you're looking for a personality assessment for your hiring process, I can recommend SHL's OPQ32 or MQ — both are well-validated for workplace use. Would you like to tell me about the role you're hiring for?",
+        "recommendations": [],
+        "end_of_conversation": false
+      }
+    }
+  ]
+}

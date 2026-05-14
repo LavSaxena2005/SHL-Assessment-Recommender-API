@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Java 8 (New)",
+    "url": "https://www.shl.com",
+    "test_type": "K",
+    "skills": ["Java", "Programming"]
+  },
+  {
+    "name": "Python Test",
+    "url": "https://www.shl.com",
+    "test_type": "K",
+    "skills": ["Python", "Programming"]
+  },
+  {
+    "name": "OPQ Personality",
+    "url": "https://www.shl.com",
+    "test_type": "P",
+    "skills": ["Personality"]
+  }
+]
